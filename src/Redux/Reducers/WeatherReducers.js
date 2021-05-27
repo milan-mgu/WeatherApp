@@ -1,4 +1,4 @@
-import { CITYLIST } from "../Types/types";
+import { CITYLIST, TEMPRATURE } from "../Types/types";
 const INITIAL_STATE = {};
 
 export default (state = INITIAL_STATE, action) => {
@@ -7,10 +7,10 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, getCitySuccess: true, cityData: action.payload }
     case CITYLIST.ERROR:
       return { ...state,getCityFailed: true, cityData: action.payload }
-    // case SIGNUP.SUCCESS:
-    //   return { ...state, signupSuccess: true, signupData: action.payload }
-    // case SIGNUP.ERROR:
-    //   return { ...state, signupFailed: true, signupData: action.payload }
+    case TEMPRATURE.SUCCESS:
+      return { ...state, getTempratureSuccess: true, TempratureData: action.payload }
+    case TEMPRATURE.ERROR:
+      return { ...state, getTempratureFailed: true, TempratureData: action.payload }
     default:
       return state;
   }

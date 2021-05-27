@@ -6,5 +6,8 @@ module.exports = {
   getCityRequest(params) {
     return apiBodyWithParamsRequest(params, `http://api.openweathermap.org/data/2.5/find?`, {}, 'GET');
   },
+  getTemperatureRequest(params) {
+    return apiBodyWithParamsRequest(params, `http://api.openweathermap.org/data/2.5/weather?`, {}, 'GET');
+  }
 }
 

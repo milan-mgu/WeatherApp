@@ -11,7 +11,6 @@ export function asyncAction(action) {
 export function* asyncSaga({ params, api, constant }) {
   try {
     const response = yield call(api, params);
-    // console.log('saga..', response)
     yield put({
       type: constant.SUCCESS, payload: response
     });
@@ -25,7 +24,6 @@ export function* asyncSaga({ params, api, constant }) {
 export function* asyncSagaNoParams({ api, constant }) {
   try {
     const response = yield call(api);
-    // console.log('saga..', response)
     yield put({
       type: constant.SUCCESS, payload: response
     });
@@ -45,10 +43,6 @@ export async function apiRequest(params, apiUrl, headers, method) {
   }
   formBody = formBody.join("&");
   url = method ? apiUrl : `${apiUrl}${formBody}`
-  // console.log('p-->apiurl-->', url)
-  // console.log('p-->body-->', JSON.stringify(formBody))
-  // console.log('p-->headers-->', headers)
-  // console.log('p-->method-->', method)
   return fetch(url, {
     method: method ? method : 'GET',
     headers: headers,
@@ -57,16 +51,11 @@ export async function apiRequest(params, apiUrl, headers, method) {
 }
 
 export async function apiBodyRequest(params, apiUrl, headers, method) {
-  console.log('p-->apiurl-->', apiUrl)
-  console.log('p-->body-->', JSON.stringify(params))
-  console.log('p-->headers-->', headers)
-  console.log('p-->method-->', method)
   return fetch(`${apiUrl}`, {
     method: method,
     headers: headers,
     body: JSON.stringify(params),
   }).then((response) => response.json())
-  // .then((res) => console.log(res, 'ress'))
 }
 
 export async function apiBodyWithParamsRequest(params, apiUrl, headers, method) {
@@ -81,10 +70,6 @@ export async function apiBodyWithParamsRequest(params, apiUrl, headers, method) 
   }
   formBody = formBody.join("&");
   url = `${apiUrl}${formBody}`
-  console.log('p-->apiurl-->', url)
-  console.log('p-->body-->', JSON.stringify(params.jsonData))
-  console.log('p-->headers-->', headers)
-  console.log('p-->method-->', method)
   return fetch(`${url}`, {
     method: method,
     headers: headers,
@@ -94,7 +79,6 @@ export async function apiBodyWithParamsRequest(params, apiUrl, headers, method) 
 
 
 export async function apiGetRequest(apiUrl, headers,method) {
-  // console.log('apiUrl-->', apiUrl)
   return fetch(`${apiUrl}`, {
     method: method ? method : 'GET',
     headers: headers,
@@ -113,10 +97,6 @@ export async function apiBodyWithParamsFormdataRequest(params, apiUrl, headers, 
   }
   formBody = formBody.join("&");
   url = `${apiUrl}${formBody}`
-  // console.log('p-->apiurl-->', url)
-  // console.log('p-->body-->', params.formData)
-  // console.log('p-->headers-->', headers)
-  // console.log('p-->method-->', method)
   return fetch(`${url}`, {
     method: method,
     headers: headers,
